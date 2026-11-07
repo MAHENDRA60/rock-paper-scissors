@@ -19,17 +19,18 @@ function playGame() {
   let computerScore = 0;
   let bothTie = 0;
 
-  function getHumanChoice() {
-     return prompt(`What Do You Choose?\nYou: ${humanScore} \nRobot: ${computerScore}\nTie: ${bothTie}`);
-  }
-
   function playRound(human, computer) {
 
     console.log(human, computer);
+    const result = document.querySelector(".result")
+
+    const h1 = document.querySelector("h1")
+
+    const pcPlay = document.querySelector(".pcPlay");
+    pcPlay.textContent = computer.toUpperCase();
 
     if (human.toLowerCase() == computer) {
-      console.log(`It's TIE! You both chose the ${computer}`);
-      alert(`It's TIE!, You both chose the ${computer}`);
+      result.textContent = `It's TIE! You both chose the ${computer}`;
       bothTie++;
       return;
     }
@@ -40,36 +41,91 @@ function playGame() {
       human.toLowerCase() == "scissors" && computer == "paper" )
     {
       console.log(`You Won This Round! ${human} beats ${computer}`)
-      alert(`You Won This Round! ${human} beats ${computer}`)
+      result.textContent = `You Won This Round! ${human} beats ${computer}`;
       humanScore++;
       return;
     }
 
     else {
       console.log(`You Lost This Round! ${computer} beats ${human}`)
-      alert(`You Lost This Round! ${computer} beats ${human}`)
+      result.textContent = `You Lost This Round! ${computer} beats ${human}`;
       computerScore++;
     }
   }
 
-  for (let i = 0, n = 5; i < n; i++) {
-    playRound(getHumanChoice(), getComputerChoise());
-  }
+  const rock = document.querySelector(".one");
+  const paper = document.querySelector(".two");
+  const scissors = document.querySelector(".th");
+  const h1 = document.querySelector("h1")
 
-  let finalScore = `You: ${humanScore}\nRobot: ${computerScore}\nTie: ${bothTie}`
+  rock.addEventListener("click",function(){
+    const getHumanChoice = "rock";
+    const pcPlay = document.querySelector(".pcPlay");
+    pcPlay.textContent =
+    console.log(getHumanChoice);
+    playRound(getHumanChoice, getComputerChoise());
 
-  if (humanScore == computerScore) {
-    console.log(`The Game Is Tie! \n${finalScore}`);
-    alert(`The Game Is Tie! \n${finalScore}`);
-  }
-  else if (humanScore > computerScore) {
-    console.log(`You Won The Game !\n${finalScore}`);
-    alert(`You Won The Game !\n${finalScore}`);
-  }
-  else {
-    console.log(`You Lost This Game !\n${finalScore}`);
-    alert(`You Lost This Game !\n${finalScore}`);
-  }
+    let finalYou = document.querySelector(".finalYou");
+    let finalPc = document.querySelector(".finalPc");
+
+    finalYou.textContent = humanScore;
+    finalPc.textContent = computerScore;
+
+    if (humanScore == 5) {
+     h1.textContent = `You Won The Game ! Click To Play Start Another Game!`;
+     computerScore = 0;
+     humanScore = 0;
+    }
+    else if (computerScore == 5){
+     h1.textContent = `You Lost This Game ! Click To Play Start Another Game!`;
+     computerScore = 0;
+     humanScore = 0;
+    }
+  })
+
+  paper.addEventListener("click", () => {
+    const getHumanChoice = "paper";
+    playRound(getHumanChoice, getComputerChoise());
+
+    let finalYou = document.querySelector(".finalYou");
+    let finalPc = document.querySelector(".finalPc");
+
+    finalYou.textContent = humanScore;
+    finalPc.textContent = computerScore;
+
+    if (humanScore == 5) {
+     h1.textContent = `You Won The Game ! Click To Play Start Another Game!`;
+     computerScore = 0;
+     humanScore = 0;
+    }
+    else if (computerScore == 5){
+     h1.textContent = `You Lost This Game ! Click To Play Start Another Game!`;
+     computerScore = 0;
+     humanScore = 0;
+    }
+  })
+
+  scissors.addEventListener("click", () => {
+    const getHumanChoice = "scissors";
+    playRound(getHumanChoice, getComputerChoise());
+
+    let finalYou = document.querySelector(".finalYou");
+    let finalPc = document.querySelector(".finalPc");
+
+    finalYou.textContent = humanScore;
+    finalPc.textContent = computerScore;
+
+    if (humanScore == 5) {
+     h1.textContent = `You Won The Game ! Click To Play Start Another Game!`;
+     computerScore = 0;
+     humanScore = 0;
+    }
+    else if (computerScore == 5){
+     h1.textContent = `You Lost This Game ! Click To Play Start Another Game!`;
+     computerScore = 0;
+     humanScore = 0;
+    }
+  })
 }
 
 playGame();
