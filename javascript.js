@@ -70,12 +70,12 @@ function playGame() {
     finalPc.textContent = computerScore;
 
     if (humanScore == 5) {
-     h1.textContent = `You Won The Game ! Click To Play Start Another Game!`;
+     h1.textContent = `You Won The Game ! Click To Play Another Game!`;
      computerScore = 0;
      humanScore = 0;
     }
     else if (computerScore == 5){
-     h1.textContent = `You Lost This Game ! Click To Play Start Another Game!`;
+     h1.textContent = `You Lost This Game ! Click To Play Another Game!`;
      computerScore = 0;
      humanScore = 0;
     }
